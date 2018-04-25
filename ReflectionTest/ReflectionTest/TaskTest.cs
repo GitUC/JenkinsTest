@@ -8,7 +8,6 @@ namespace ReflectionTest
 {
     public class TaskTest
     {
-
         public static void Test2()
         {
             var tasks = new List<Task<int>>();
@@ -56,13 +55,10 @@ namespace ReflectionTest
                     Console.WriteLine("\n-------------------------------------------------\n{0}", e.InnerExceptions[j].ToString());
                 }
             }
-
-            var result = true;
-            
         }
     
 
-        public  static bool TestAsync()
+        public async static Task<bool> TestAsync()
         {
             Console.WriteLine("TaskTest");
 
@@ -74,7 +70,7 @@ namespace ReflectionTest
             //var task = await Task.Factory.StartNew<string>((message) => WaitSynchronously(obj));
             foreach(var item in messages)
             {
-                tasks.Add(Task.Factory.StartNew(()=> WaitSynchronously(item)));
+                tasks.Add(Task.Factory.StartNew(()=>  WaitAsynchronouslyAsync(item)));
             }
 
             Task.WaitAll(tasks.ToArray());
@@ -92,7 +88,7 @@ namespace ReflectionTest
         static async Task WaitAsynchronouslyAsync(string message)
         {
             await Task.Delay(5000);
-            Console.WriteLine( $"Finished {message}");
+            Console.WriteLine( $"Finished haha {message}");
         }
 
         // The following method runs synchronously, despite the use of async.

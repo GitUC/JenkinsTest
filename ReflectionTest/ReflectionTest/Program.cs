@@ -30,9 +30,11 @@ namespace ReflectionTest
             Test1(typeof(Person));
             */
 
-            //Test2();
+            Test2();
+           
+            TaskTest.TestAsync().Wait();
 
-            TaskTest.TestAsync();
+            Console.WriteLine("Test completed! Press any key to complete the test.");
             Console.ReadKey();
         }
 
