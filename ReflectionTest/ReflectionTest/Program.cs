@@ -32,7 +32,7 @@ namespace ReflectionTest
 
             Test2();
            
-            TaskTest.TestAsync();
+            TaskTest.TestAsync().Wait();
 
             Console.WriteLine("Test completed! Press any key to complete the test.");
             Console.ReadKey();
